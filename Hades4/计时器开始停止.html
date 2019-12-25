@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+
+</head>
+<style>
+    .box {
+        margin-top: 200px;
+        margin-left: 150px;
+    }
+    
+    span {
+        display: inline-block;
+        height: 40px;
+        width: 40px;
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        line-height: 40px;
+        font-size: 20px;
+    }
+</style>
+</head>
+
+<body>
+    <button class="begin">开始</button>
+    <button class="stop">停止</button>
+    <script>
+        var begin = document.querySelector('.begin');
+        var end = document.querySelector('.stop');
+        var timer = null; //赋值timer 全局变量 end中的函数可以访问timer
+        begin.addEventListener('click', function() {
+            //输入计时器功能
+            timer = setInterval(function() {
+                console.log(123);
+
+            }, 1000)
+        })
+
+        end.addEventListener('click', function() {
+            clearInterval(timer);
+        })
+    </script>
+</body>
+
+</html>

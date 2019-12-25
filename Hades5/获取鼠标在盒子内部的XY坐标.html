@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    
+    .fa {
+        margin-top: 200px;
+        margin-left: 300px;
+        width: 200px;
+        height: 200px;
+        background-color: pink;
+        box-sizing: border-box;
+        position: relative;
+    }
+</style>
+</head>
+
+<body>
+    <div class="fa"></div>
+    <script>
+        var fa = document.querySelector('.fa');
+        fa.addEventListener('mousemove', function(e) {
+            console.log(e.pageX);
+            console.log(e.pageY);
+            var x = e.pageX - this.offsetLeft;
+            console.log(x);
+            var y = e.pageY - this.offsetTop;
+            fa.innerHTML = 'x坐标是' + x + 'y坐标是' + y;
+
+        })
+    </script>
+
+</body>
+
+</html>

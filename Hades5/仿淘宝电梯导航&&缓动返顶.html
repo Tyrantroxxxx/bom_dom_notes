@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+
+</head>
+<style>
+    .slider-bar {
+        position: absolute;
+        left: 50%;
+        top: 300px;
+        margin-left: 600px;
+        width: 45px;
+        height: 130px;
+        background-color: pink;
+    }
+    
+    .w {
+        width: 1200px;
+        margin: 10px auto;
+    }
+    
+    .header {
+        height: 150px;
+        background-color: purple;
+    }
+    
+    .banner {
+        height: 250px;
+        background-color: skyblue;
+    }
+    
+    .main {
+        height: 1000px;
+        background-color: yellowgreen;
+    }
+    
+    span {
+        display: none;
+        position: absolute;
+        bottom: 0;
+    }
+</style>
+</head>
+
+<body>
+    <div class="slider-bar">
+        <span class="goBack">返回顶部</span>
+    </div>
+    <div class="header w">头部区域</div>
+    <div class="banner w">banner区域</div>
+    <div class="main w">主体部分</div>我是内容我是内容我是内容我是内容我是内容我是内容</div>
+    <script>
+        var sliderbar = document.querySelector('.slider-bar');
+        var banner = document.querySelector('.banner');
+        var header = document.querySelector('.header');
+        var goBack = document.querySelector('.goBack');
+        var bannerTop = banner.offsetTop;
+        var sliderbarX = sliderbar.offsetTop - bannerTop;
+        var headerTop = header.offsetTop;
+        document.addEventListener('scroll', function() {
+                //window.pageYoffset是页面被卷去的头部
+
+                if (window.pageYOffset >= bannerTop) {
+                    sliderbar.style.position = 'fixed';
+                    //流畅scroll 延续往下fixed
+                    sliderbar.style.top = sliderbarX + 'px';
+                    if (window.pageYOffset >= headerTop) {
+                        goBack.style.display = 'block';
+                    }
+                } //复原Top300px
+                else {
+                    sliderbar.style.position = 'absolute';
+                    sliderbar.style.top = '300px';
+                    goBack.style.display = 'none';
+
+
+                }
+            })
+            //点击返回顶部模块，让窗口滚动到页面最上方
+        goBack.addEventListener('click', function() {
+                //window.scroll(x,y); xy 没有单位 数字即可
+                animate(window, 0);
+            })
+            //简单动画函数封装obg目标对象，target目标位置
+            //**********元素一定要加定位/absolute*********
+        function animate(obj, target, callback) {
+            // console.log(callback);  callback = function() {}  调用的时候 callback()
+
+            // 先清除以前的定时器，只保留当前的一个定时器执行
+            clearInterval(obj.timer);
+            obj.timer = setInterval(function() {
+                // 步长值写到定时器的里面
+                // 把我们步长值改为整数 不要出现小数的问题
+                // var step = Math.ceil((target - obj.offsetLeft) / 10);
+                var step = (target - window.pageYOffset) / 10;
+                step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                if (window.pageYOffset == target) {
+                    // 停止动画 本质是停止定时器
+                    clearInterval(obj.timer);
+                    // 回调函数写到定时器结束里面
+                    // if (callback) {
+                    //     // 调用函数
+                    //     callback();
+                    // }
+                    callback && callback();
+                }
+                // 把每次加1 这个步长值改为一个慢慢变小的值  步长公式：(目标值 - 现在的位置) / 10
+                //obj.style.left = obj.offsetLeft + step + 'px';
+                window.scroll(0, window.pageYOffset + step);
+
+            }, 15);
+        }
+    </script>
+
+</body>
+
+</html>

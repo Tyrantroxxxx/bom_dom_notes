@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+
+</head>
+<style>
+    .bg {
+        background-color: black;
+    }
+</style>
+</head>
+
+<body>
+    <button>开关灯</button>
+    <script>
+        //toggle 如果obj原有类名中有bg则去除bg,如果没有bg则添加bg
+        var btn = document.querySelector('button');
+        btn.addEventListener('click', function() {
+            document.body.classList.toggle('bg');
+        })
+    </script>
+
+</body>
+
+</html>

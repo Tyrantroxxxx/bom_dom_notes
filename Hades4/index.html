@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        console.log(location.search);
+        //从问号开始截取 .substr(索引号开始，截取几个)
+        var params = location.search.substr(1);
+        console.log(params);
+        //利用=把字符分割成数组 split('=');
+        var arr = params.split('=');
+        console.log(arr);
+        var div = document.querySelector('div');
+        div.innerHTML = arr[1] + '欢迎您';
+    </script>
+</body>
+
+</html>

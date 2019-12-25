@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+
+</head>
+<style>
+    div {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        background-color: pink;
+    }
+</style>
+</head>
+
+<body>
+    <button>点击</button>
+    <div></div>
+    <script>
+        //简单动画函数封装obg目标对象，target目标位置
+        //style中一定要加position：absolute；加定位
+        function animate(obj, target) {
+            //只保证只有一个定时器在走 不会叠加加速
+            clearInterval(obj.timer);
+            obj.timer = setInterval(function() {
+
+                if (obj.offsetLeft >= target) {
+                    clearInterval(timer);
+                }
+                var objX = obj.offsetLeft + 10;
+                obj.style.left = objX + 'px';
+            }, 30)
+        }
+        var div = document.querySelector('div');
+        var btn = document.querySelector('button');
+        btn.addEventListener('click', function() {
+            animate(div, 400);
+        })
+    </script>
+
+</body>
+
+</html>

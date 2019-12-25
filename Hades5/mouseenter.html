@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+
+</head>
+<style>
+    .father {
+        position: relative;
+        height: 400px;
+        width: 400px;
+        background-color: pink;
+    }
+    
+    .son {
+        position: absolute;
+        height: 200px;
+        width: 200px;
+        background-color: purple;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+</style>
+</head>
+
+<body>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+
+    <script>
+        //mouseover 经过自身盒子以及子盒子都触发 有冒泡概念 
+        //mouseenter 只有经过自身盒子才会触发 没有冒泡概念 mouseleave 鼠标离开
+        var father = document.querySelector('.father');
+        var son = document.querySelector('.son');
+        father.addEventListener('mouseenter', function() {
+            console.log(11);
+        })
+    </script>
+
+</body>
+
+</html>

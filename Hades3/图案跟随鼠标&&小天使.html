@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+
+</head>
+<style>
+    img {
+        position: absolute;
+        left: 50px;
+    }
+</style>
+</head>
+
+<body>
+    <img src="images/angel.gif" alt="">
+    <script>
+        var img = document.querySelector('img');
+        document.addEventListener('mousemove', function(e) {
+            var x = e.pageX - 40 + 'px';
+            var y = e.pageY - 40 + 'px';
+            console.log(x);
+            console.log(y);
+            img.style.left = x;
+            img.style.top = y;
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+
+</head>
+<style>
+    .sliderbar {
+        position: fixed;
+        right: 0;
+        bottom: 100px;
+        width: 40px;
+        height: 40px;
+        text-align: center;
+        line-height: 40px;
+        cursor: pointer;
+        color: #fff;
+    }
+    
+    .con {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 200px;
+        height: 40px;
+        background-color: purple;
+        z-index: -1;
+    }
+</style>
+<script src="animate.js"></script>
+</head>
+
+<body>
+    <div class="sliderbar">
+        <span>←</span>
+        <div class="con">问题反馈</div>
+    </div>
+    <script>
+        var sliderbar = document.querySelector('.sliderbar');
+        var con = document.querySelector('.con');
+        //鼠标经过sliderbar con盒子滑到左侧
+        //鼠标离开sliderbar con盒子滑到右侧
+        sliderbar.addEventListener('mouseenter', function() {
+            animate(con, -160, function() {
+                //动画执行完毕把←改为→
+                sliderbar.children[0].innerHTML = '→';
+            });
+        })
+        sliderbar.addEventListener('mouseleave', function() {
+            animate(con, 0, function() {
+                sliderbar.children[0].innerHTML = '←';
+            });
+
+        })
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+
+</head>
+<style>
+    table {
+        width: 500px;
+        margin: 100px auto;
+        border-collapse: collapse;
+        text-align: center;
+    }
+    
+    td,
+    th {
+        border: 1px solid #333;
+    }
+    
+    thead tr {
+        height: 40px;
+        background-color: #ccc;
+    }
+</style>
+</head>
+
+<body>
+    <table cellspacing="0">
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>科目</th>
+                <th>成绩</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+
+
+        </tbody>
+    </table>
+    <script>
+        var dates = [{
+                name: '罗志祥',
+                subject: 'Javascript',
+                score: 100
+            }, {
+                name: '小猪',
+                subject: 'Javascript',
+                score: 98
+            }, {
+                name: '小D',
+                subject: 'Javascript',
+                score: 96
+            }, {
+                name: '小G',
+                subject: 'Javascript',
+                score: 70
+            }]
+            //tobody中创建行(dates长度)
+
+        var tbody = document.querySelector('tbody');
+        for (var i = 0; i < dates.length; i++) { //外部for循环创建行
+            var tr = document.createElement('tr');
+            tbody.appendChild(tr);
+            //创建列
+            for (var k in dates[i]) { //内部for循环创建列
+                var td = document.createElement('td');
+                td.innerHTML = dates[i][k];
+                tr.appendChild(td);
+            }
+            //创建删除键
+            var td = document.createElement('td');
+            tr.appendChild(td);
+            td.innerHTML = "<a href = 'javascript:;' >删除 </a>";
+        }
+        //删除键功能执行
+        var as = document.querySelectorAll('a');
+        var tbody = document.querySelector('tbody');
+        for (var i = 0; i < as.length; i++) {
+            as[i].onclick = function() {
+                //a的father是li,this.parentNode = li
+                tbody.removeChild(this.parentNode.parentNode);
+
+            }
+        }
+
+        //创建删除单元格
+
+        //for (var k in obj){
+        //  k得到属性名(name,subject),obj[k]是属性值 
+        //  }
+    </script>
+</body>
+
+</html>

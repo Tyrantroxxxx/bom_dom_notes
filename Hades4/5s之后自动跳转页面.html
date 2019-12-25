@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+
+</head>
+<style>
+
+</style>
+</head>
+
+<body>
+    <button>123</button>
+    <div>5s之后打开你想要的网页</div>
+    <script>
+        var btn = document.querySelector('button');
+        var div = document.querySelector('div');
+        btn.addEventListener('click', function() {
+            location.href = 'http://www.baidu.com'
+
+        })
+        var timer = 5
+        setInterval(function() {
+            if (timer == 0) {
+                location.href = 'http://www.baidu.com';
+            } else {
+                div.innerHTML = timer + 's之后打开你想要の网页';
+                timer--;
+            }
+
+        }, 1000)
+    </script>
+</body>
+
+</html>

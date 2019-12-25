@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<!-- saved from url=(0047)file:///C:/Users/Administrator/Desktop/JS1.html -->
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        li {
+            list-style-type: none;
+        }
+        
+        .tab {
+            width: 978px;
+            margin: 100px auto;
+        }
+        
+        .tab_list {
+            height: 39px;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+        }
+        
+        .tab_list li {
+            float: left;
+            height: 39px;
+            line-height: 39px;
+            padding: 0 20px;
+            text-align: center;
+            cursor: pointer;
+        }
+        
+        .tab_list .current {
+            background-color: #c81623;
+            color: #fff;
+        }
+        
+        .item_info {
+            padding: 20px 0 0 20px;
+        }
+        
+        .item {
+            display: none;
+        }
+    </style>
+</head>
+
+
+
+<body>
+    <div class="tab">
+        <div class="tab_list">
+            <ul>
+                <li class="current" index="0">商品介绍</li>
+                <li index="1" class="">规格与包装</li>
+                <li index="2" class="">售后保障</li>
+                <li index="3" class="">商品评价（50000）</li>
+                <li index="4" class="">手机社区</li>
+            </ul>
+        </div>
+        <div class="tab_con">
+            <div class="item" style="display: block;">
+                商品介绍模块内容
+            </div>
+            <div class="item" style="display: none;">
+                规格与包装模块内容
+            </div>
+            <div class="item" style="display: none;">
+                售后保障模块内容
+            </div>
+            <div class="item" style="display: none;">
+                商品评价（50000）模块内容
+            </div>
+            <div class="item" style="display: none;">
+                手机社区模块内容
+            </div>
+
+        </div>
+    </div>
+    <script>
+        var tab_list = document.querySelector('.tab_list');
+        var lis = tab_list.querySelectorAll('li');
+        var items = document.querySelector('.tab_con').querySelectorAll('.item');
+        for (var i = 0; i < lis.length; i++) {
+            lis[i].setAttribute('index', i);
+            lis[i].onclick = function() {
+                for (var i = 0; i < lis.length; i++) {
+                    lis[i].className = '';
+                }
+                this.className = 'current';
+                var index = this.getAttribute('index');
+                for (var j = 0; j < lis.length; j++) {
+                    items[j].style.display = 'none';
+                }
+                items[index].style.display = 'block';
+
+            }
+        }
+    </script>
+
+
+</body>
+
+</html>
